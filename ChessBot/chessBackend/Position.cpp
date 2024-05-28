@@ -93,15 +93,14 @@ namespace chessBackend {
         for (int i = 0; i < processedFEN.length(); i++) {
             if (bitCounter < '9' && bitCounter > '1')
                 for (uint8_t j = 0; j < 12; j++) if (processedFEN[i] == pieceFENStrings[j]) bitSet(pieceBitboards[i], bitCounter);
-                else
-                  switch (processedFEN[i]) {
-                    case '2': bitCounter++;    break;
-                    case '3': bitCounter += 2; break;
-                    case '4': bitCounter += 3; break;
-                    case '5': bitCounter += 4; break;
-                    case '6': bitCounter += 5; break;
-                    case '7': bitCounter += 6; break;
-                    case '8': bitCounter += 7; break;
+            else switch (processedFEN[i]) {
+                case '2': bitCounter++;    break;
+                case '3': bitCounter += 2; break;
+                case '4': bitCounter += 3; break;
+                case '5': bitCounter += 4; break;
+                case '6': bitCounter += 5; break;
+                case '7': bitCounter += 6; break;
+                case '8': bitCounter += 7; break;
             } bitCounter++;
         }
 
@@ -119,11 +118,7 @@ namespace chessBackend {
 
         
         //Кінець обробки рядів дошки
-        switch (FEN[++i]) {
-            case 'w': movingPlayer = 1; break;
-            case 'b': movingPlayer = 0; break;
-            //default: cout << "Entered FEN notation is wrong"; break;
-        }
+        (FEN[++i] == 'w') ? movingPlayer = 1 : movingPlayer = 0;
 
         i += 2;
         if (FEN[i] != '-') {
@@ -135,15 +130,7 @@ namespace chessBackend {
 
         enPassantSquare = 0;
         if (FEN[++i] != '-') {
-            switch (FEN[i]) {
-                case 'b': enPassantSquare = 1; break;
-                case 'c': enPassantSquare = 2; break;
-                case 'd': enPassantSquare = 3; break;
-                case 'e': enPassantSquare = 4; break;
-                case 'f': enPassantSquare = 5; break;
-                case 'g': enPassantSquare = 6; break;
-                case 'h': enPassantSquare = 7; break;
-            } i++;
+            enPassantSquare = (FEN[i++] - 'a');
             enPassantSquare += (stringToInt<uint8_t>(FEN[i]) - 1) << 3;
         } i += 2;
 

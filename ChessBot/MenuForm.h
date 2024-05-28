@@ -596,11 +596,7 @@ namespace MainProgramMenu {
 	}
 
 	static Color DarkenColor(Color inColor, double lightenAmount){
-		return Color::FromArgb(
-	   inColor.A,
-	   (int)max(0, inColor.R - 255 * lightenAmount),
-	   (int)max(0, inColor.G - 255 * lightenAmount),
-	   (int)max(0, inColor.B - 255 * lightenAmount));
+		return Color::FromArgb( inColor.A, (int)max(0, inColor.R - 255 * lightenAmount), (int)max(0, inColor.G - 255 * lightenAmount), (int)max(0, inColor.B - 255 * lightenAmount) );
 	}
 
 	private: System::Void panel1_MouseEnter(System::Object^ sender, System::EventArgs^ e) {
