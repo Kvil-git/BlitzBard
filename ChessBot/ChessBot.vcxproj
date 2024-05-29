@@ -125,7 +125,7 @@
     <ClCompile Include="chessBackend\Position.cpp" />
     <ClCompile Include="chessBackend\Game.cpp" />
     <ClCompile Include="chessBackend\Move.cpp" />
-    <ClCompile Include="chessBackend\MoveEval.cpp" />
+    <ClCompile Include="chessBackend\PositionEval.cpp" />
     <ClCompile Include="chessBackend\MoveGen.cpp" />
     <ClCompile Include="resources\functions.cpp" />
     <ClCompile Include="main.cpp" />
@@ -142,6 +142,7 @@
     <ClInclude Include="BoardForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="chessBackend\PositionEval.h" />
     <ClInclude Include="MenuForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>

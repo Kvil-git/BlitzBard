@@ -3,6 +3,7 @@
 namespace chessBackend {
     class Position {
         friend class Move;
+        friend class PositionEval;
         friend class MoveGenerator;
     private:
         enum PieceBitboardIndices {
@@ -21,8 +22,8 @@ namespace chessBackend {
         };
 
         enum PieceColor {
-            white,
-            black
+            black,
+            white
         };
 
         enum CastlingRights {

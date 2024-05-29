@@ -107,7 +107,7 @@ namespace chessBackend {
 
 
         for (uint8_t piece = 0; piece < 12; piece += 2) allPieces[white] |= pieceBitboards[piece];
-        for (uint8_t piece = 0; piece < 12; piece += 2) allPieces[black] |= pieceBitboards[piece];
+        for (uint8_t piece = 1; piece < 12; piece += 2) allPieces[black] |= pieceBitboards[piece];
 
         occupiedSquares = allPieces[white] | allPieces[black];
 

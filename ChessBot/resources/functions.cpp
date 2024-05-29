@@ -71,20 +71,13 @@ template<typename Type> inline Type powOfTwo(uint8_t power) {
     return (Type(1) << power);
 }
 
-uint8_t strLen(System::String^ input) {
-    return input->Length;
-}
-
-uint8_t strLen(std::string input) {
-    return input.length();
-}
-
 template<typename Integer> std::string intToString(Integer number, bool reverse = 0) {
     if (number) {
         std::string temp;
         while (number) {
             temp += ((char)((number % 10) + 48));
-            number /= 10; }
+            number /= 10;
+        }
         if (reverse) return temp;
         else {
             std::string output;
@@ -95,63 +88,63 @@ template<typename Integer> std::string intToString(Integer number, bool reverse 
     else return "0";
 }
 
-template<typename Type, typename Type2> Type charToInt(const Type2 &s) {
+template<typename Type, typename Type2> Type charToInt(const Type2& s) {
     switch (s) {
-        case '0': return (Type)0; break;
-        case '1': return (Type)1; break;
-        case '2': return (Type)2; break;
-        case '3': return (Type)3; break;
-        case '4': return (Type)4; break;
-        case '5': return (Type)5; break;
-        case '6': return (Type)6; break;
-        case '7': return (Type)7; break;
-        case '8': return (Type)8; break;
-        case '9': return (Type)9; break;
+    case '0': return (Type)0; break;
+    case '1': return (Type)1; break;
+    case '2': return (Type)2; break;
+    case '3': return (Type)3; break;
+    case '4': return (Type)4; break;
+    case '5': return (Type)5; break;
+    case '6': return (Type)6; break;
+    case '7': return (Type)7; break;
+    case '8': return (Type)8; break;
+    case '9': return (Type)9; break;
     }
     return (Type)-1;
 }
 
 template<typename Type> Type stringToInt(const char& s) {
     switch (s) {
-        case '0': return (Type)0;
-        case '1': return (Type)1;
-        case '2': return (Type)2;
-        case '3': return (Type)3;
-        case '4': return (Type)4;
-        case '5': return (Type)5;
-        case '6': return (Type)6;
-        case '7': return (Type)7;
-        case '8': return (Type)8;
-        case '9': return (Type)9;
+    case '0': return (Type)0;
+    case '1': return (Type)1;
+    case '2': return (Type)2;
+    case '3': return (Type)3;
+    case '4': return (Type)4;
+    case '5': return (Type)5;
+    case '6': return (Type)6;
+    case '7': return (Type)7;
+    case '8': return (Type)8;
+    case '9': return (Type)9;
     }
 }
 
-template<typename Type> Type stringToInt(const std::string &s) {
+template<typename Type> Type stringToInt(const std::string& s) {
     Type output;
     switch (s[0]) {
-        case '0': return 0;
-        case '1': output = 1; break;
-        case '2': output = 2; break;
-        case '3': output = 3; break;
-        case '4': output = 4; break;
-        case '5': output = 5; break;
-        case '6': output = 6; break;
-        case '7': output = 7; break;
-        case '8': output = 8; break;
-        case '9': output = 9; break;
+    case '0': return 0;
+    case '1': output = 1; break;
+    case '2': output = 2; break;
+    case '3': output = 3; break;
+    case '4': output = 4; break;
+    case '5': output = 5; break;
+    case '6': output = 6; break;
+    case '7': output = 7; break;
+    case '8': output = 8; break;
+    case '9': output = 9; break;
     }
     for (uint8_t i = 1; i < s.length(); i++) {
         output *= 10;
         switch (s[i]) {
-            case '1': output += 1; break;
-            case '2': output += 2; break;
-            case '3': output += 3; break;
-            case '4': output += 4; break;
-            case '5': output += 5; break;
-            case '6': output += 6; break;
-            case '7': output += 7; break;
-            case '8': output += 8; break;
-            case '9': output += 9; break;
+        case '1': output += 1; break;
+        case '2': output += 2; break;
+        case '3': output += 3; break;
+        case '4': output += 4; break;
+        case '5': output += 5; break;
+        case '6': output += 6; break;
+        case '7': output += 7; break;
+        case '8': output += 8; break;
+        case '9': output += 9; break;
         }
     }
     return output;
@@ -169,7 +162,7 @@ template<typename Type> Type mapValues(Type x, Type in_min, Type in_max, Type ou
     return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
 }
 
-template<class Integer> static Integer powOfTen(uint8_t input) {
+template<class Integer> static Integer powOfTen(const uint8_t& input) {
     static const int pow10[10] = {
         1, 10, 100, 1000, 10000,
         100000, 1000000, 10000000, 100000000, 1000000000
@@ -192,6 +185,24 @@ template <class Char> uint8_t pieceToInt(Char input) {
         case 'k':return 12;
     }
 }
+
+template <class Integer> uint8_t countSetBits(Integer input) { //Brian Kernighan’s Algorithm
+    uint8_t i = 0;
+    while (input) {
+        input &= (input - 1);
+        i++;
+    } return i;
+}
+
+uint8_t strLen(System::String^ input) {
+    return input->Length;
+}
+
+uint8_t strLen(std::string input) {
+    return input.length();
+}
+
+
 
 void splitFaceIndex(const std::string &faceIndex, std::vector<std::string> &parts) {
     std::stringstream ss(faceIndex);
